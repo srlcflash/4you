@@ -1,0 +1,245 @@
+@import "variable";
+
+.main-block {
+  float: left;
+  width: 100%;
+}
+
+.main-title {
+  //margin-top: 230px;
+  margin-top: calc((50% - 140px) / 2);
+  @include transition($animation-2);
+  opacity: 1;
+
+  @include breakpoint($small) {
+    margin-top: calc(50%);
+  }
+
+  h1 {
+    color: rgba($black, $opt-2);
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 55px;
+    font-family: $robotoSlab;
+  }
+
+  h3 {
+    color: rgba($black, $opt-3);
+    text-align: center;
+  }
+}
+
+//------------------------------------------------------------------
+//Side panel
+//------------------------------------------------------------------
+.side-panel {
+  margin-left: 20px;
+
+  @include breakpoint($medium) {
+    margin-top: 30px;
+    margin-left: 0;
+  }
+
+  .side-panel-row {
+    margin-bottom: 20px;
+
+    h6.title {
+      color: $black;
+      font-weight: $font-w-medium;
+      text-transform: uppercase;
+    }
+    h6.info {
+      margin-top: 3px;
+      color: rgba($blue-dark, $opt-2);
+      font-weight: $font-w-light;
+    }
+  }
+}
+
+//------------------------------------------------------------------
+//Search result style
+//------------------------------------------------------------------
+
+#searchContent {
+
+}
+
+//------------------------------------------------------------------
+//Pagination
+//------------------------------------------------------------------
+.site-pagination {
+  margin: 30px 0;
+  float: right;
+
+  .paginations {
+    text-align: right;
+
+    a {
+      float: left;
+      font-size: $font-small;
+      color: rgba($blue-dark, $opt-3);
+      text-align: center;
+      margin-right: 24px;
+      width: 26px;
+      height: 26px;
+      @include border-radius(2px);
+
+      &:first-child {
+        border: none;
+        width: auto;
+      }
+      &:last-child {
+        border: none;
+        margin-right: 0;
+        width: auto;
+      }
+
+      &.current {
+        color: $white;
+        background: $p-dark;
+      }
+
+      &.disabled {
+        color: rgba($blue-dark, $opt-4);
+      }
+
+    }
+  }
+}
+
+.top-space-block {
+  padding-top: 68px;
+}
+
+//------------------------------------------------------------------
+//Data table
+//------------------------------------------------------------------
+.data-table {
+  width: 100%;
+
+  thead {
+    tr {
+      th {
+        background: $secondary;
+        color: $white;
+        padding: 18px 15px;
+        font-weight: $font-w-regular;
+        font-size: 12px;
+        text-transform: uppercase;
+
+      }
+    }
+  }
+  tr {
+    padding: 0;
+
+    td {
+      padding: 0;
+
+      .data {
+        padding: 10px 15px;
+        white-space: nowrap;
+        //overflow: hidden;
+        text-overflow: ellipsis;
+        color: $black;
+        font-size: 14px;
+
+        &:last-child {
+          padding-right: 0;
+        }
+
+        &.limit {
+          &.l-150 {
+            width: 150px;
+          }
+        }
+      }
+    }
+  }
+
+  &.td-border-bottom {
+    td {
+      border-bottom: 1px solid #eaeaec;
+    }
+  }
+}
+
+//------------------------------------------------------------------
+//Advertisement Layout
+//------------------------------------------------------------------
+.add-block {
+  padding-top: 68px;
+}
+
+//------------------------------------------------------------------
+//Job Seeker Layout
+//------------------------------------------------------------------
+
+.jobSeeker-block {
+  padding-top: 68px;
+}
+
+//------------------------------------------------------------------
+//Advertisement Layout
+//------------------------------------------------------------------
+
+.advertisement-block {
+  padding-top: 68px;
+}
+
+//------------------------------------------------------------------
+//Error page
+//------------------------------------------------------------------
+.error-page {
+  margin-top: calc(25% - 50px);
+}
+
+.yellow-script {
+  padding: 60px 0;
+  background: $p-light;
+}
+
+.search-section {
+  @include transition(all, ease-in, 0.3s);
+}
+
+footer {
+  //position: fixed;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+  bottom: 0;
+  float: left;
+  background: $black-2;
+  min-height: 94px;
+
+  ul {
+    float: left;
+    margin: 0 0 20px 0;
+    padding: 0;
+
+    li {
+      display: inline-block;
+      vertical-align: middle;
+      float: left;
+      margin-right: 30px;
+
+      a {
+        color: rgba($white, 0.56);
+        padding: 5px 0;
+        font-size: 14px;
+        font-weight: $font-w-light;
+
+        &:hover {
+          color: rgba($white, 0.86);
+        }
+      }
+    }
+  }
+
+  p {
+    color: rgba($white, 0.3);
+    font-size: 12px;
+    font-weight: $font-w-light;
+  }
+}

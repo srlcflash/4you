@@ -1,0 +1,227 @@
+//---------------------------------------------------
+//Variables
+//---------------------------------------------------
+
+//Header Font size
+$h1: 55px;
+$h2: 36px;
+$h3: 24px;
+$h4: 18px;
+$h5: 16px;
+$h6: 14px;
+
+//Base font size
+$base-font-size: 14px;
+
+//Font Family
+$roboto: 'Roboto', sans-serif;
+$robotoSlab: 'Roboto Slab', serif;
+
+//Font sizes
+$font-xs-large: 55px;
+$font-largest: 36px;
+$font-large: 24px;
+$font-small: 18px;
+$font-smallest: 16px;
+$font-xs-small: $base-font-size;
+
+//Font weight
+$font-w-light: 300;
+$font-w-regular: 400;
+$font-w-medium: 500;
+
+//Opacity
+$opt-1: 1;
+$opt-2: 0.86;
+$opt-3: 0.56;
+$opt-4: 0.30;
+
+//Colors
+$primary: #fbab18;
+$p-light: #ffca28;
+$p-dark: #f5820c;
+
+$secondary: #445a64;
+
+$white: #fff;
+$white-light: #f7f7f7;
+$white-xs-light: #feffff;
+$black: #000;
+$black-2: #010101;
+$blue-dark: #2c2b3f;
+$blue-light: #2491f6;
+$blue-light-2: #028dda;
+$blue-light-3: #3de3ee;
+$blue-light-4: #39dded;
+$gray-light: #bfbfc5;
+$orange: #f26922;
+
+$dark-grey: #445a64;
+$dark-ash: $secondary;
+
+//Message Color
+$success: #00BFA5;
+$info: #3DB9E9;
+$error: #FF8A65;
+
+//Button Color
+$btn-default-color: #cfcfd2;
+
+//Animation
+$animation-1: all 0.8s cubic-bezier(.01, .87, .29, .97);
+$animation-2: all 0.5s cubic-bezier(.01, .87, .29, .97);
+$animation-popup: all 0.4s cubic-bezier(.64, .1, .27, 1.44);
+$animation-none: all 0 cubic-bezier(.64, .1, .27, 1.44);
+$animation-ease-in-out: all 0.2s ease-in-out;
+
+//$animation-popup: all 0.8s cubic-bezier(.83,.07,.1,1.4);
+
+//---------------------------------------------------
+//Functions
+//---------------------------------------------------
+
+//Font size by base font
+@function fontSizeByBase($val) {
+  @return $base-font-size * $val / 100;
+}
+
+//---------------------------------------------------
+//Mixing
+//---------------------------------------------------
+//Margin
+@mixin margin {
+  $class-margin: m !default;
+  $class-margin-cag: ('t', 'b', 'r', 'l');
+  $margin-map: (
+          't':'top',
+          'b':'bottom',
+          'l':'left',
+          'r':'right'
+  );
+
+  @for $i from 0 through 60 {
+    @each $ctg in $class-margin-cag {
+      .m#{$ctg}-#{$i} {
+        margin-#{map-get($margin-map, $ctg)}: 0px + $i !important;
+      }
+    }
+  }
+}
+
+//Padding
+@mixin padding {
+  $class-margin-cag: ('t', 'b', 'r', 'l');
+  $margin-map: (
+          't':'top',
+          'b':'bottom',
+          'l':'left',
+          'r':'right'
+  );
+
+  @for $i from 0 through 60 {
+    @each $ctg in $class-margin-cag {
+      .p#{$ctg}-#{$i} {
+        padding-#{map-get($margin-map, $ctg)}: 0px + $i !important;
+      }
+    }
+  }
+}
+
+//Text color class
+@mixin text-color($color,$className) {
+  $opacity: (86, 56, 30);
+
+  &.text-#{$className} {
+    color: $color;
+  }
+
+  &.hover:hover {
+    color: rgba($color, 0.56);
+  }
+
+  &.text-#{$className} {
+    @for $i from 1 through length($opacity) {
+
+      $opt: nth($opacity,$i) /100;
+
+      &.text-light-#{$i} {
+        color: rgba($color, $opt);
+      }
+    }
+
+  }
+}
+
+//Float Block
+@mixin float-block {
+  float: left;
+  width: 100%;
+}
+
+//Responsive
+$small: 'small';
+$medium: 'medium';
+$large: 'large';
+
+@mixin breakpoint($breakpoint) {
+  @if $breakpoint == "small" {
+    @media (max-width: 767px) {
+      @content;
+    }
+  } @else if $breakpoint == "medium" {
+    @media (max-width: 992px) {
+      @content;
+    }
+  } @else if $breakpoint == "large" {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  }
+}
+
+//Box Shadow
+@mixin box-shadow($top, $left, $blur, $spread,$color) {
+  -webkit-box-shadow: $top $left $blur $spread $color;
+  -moz-box-shadow: $top $left $blur $spread $color;
+  box-shadow: $top $left $blur $spread $color;
+}
+
+//Border radius
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+//Transition
+@mixin transition($transition...) {
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  -webkit-transition: $transition;
+  transition: $transition;
+}
+
+//Transform
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+//Transition Duration
+@mixin transition-duration($duration) {
+  transition-duration: $duration;
+  -webkit-transition-duration: $duration;
+  -moz-transition-duration: $duration;
+  -o-transition-duration: $duration;
+}
+
+@mixin transform-origin($origin...) {
+  -webkit-transform-origin: $origin;
+  -moz-transform-origin: $origin;
+  -o-transform-origin: $origin;
+  -ms-transform-origin: $origin;
+  transform-origin: $origin;
+}

@@ -1,0 +1,106 @@
+//Icon
+.icon {
+  display: inline-block;
+  position: relative;
+
+  &.v-middle {
+    vertical-align: middle;
+  }
+
+  &.icon-20 {
+    width: 20px;
+    height: 20px;
+
+    &.icon-linkin {
+      background: url("../images/system/icon/site/20/ic_20-link.png");
+    }
+
+    &.linkedin {
+      @extend .icon-linkin;
+    }
+
+    &.camera {
+      height: 16px;
+      background: url("../images/system/icon/site/20/ic_20-camera.png");
+    }
+  }
+
+  &.icon-24 {
+    width: 24px;
+    height: 24px;
+
+    &.call {
+      background: url("../images/system/icon/site/24/ic_24-call.png");
+    }
+
+    &.email {
+      background: url("../images/system/icon/site/24/ic_24-email.png");
+    }
+
+    &.edit {
+      background: url("../images/system/icon/site/24/ic_24-edit.png");
+    }
+  }
+
+  &.icon-arrow-down {
+    height: 10px;
+    background: url("../images/system/icon/site/20/ic_20-arrow-down.png");
+  }
+
+  &.icon-16 {
+    width: 16px;
+    height: 16px;
+
+    &.ic-cross {
+      background: url("../images/system/icon/site/16/ic_16-cross.png");
+    }
+
+    &.ic-view {
+      background: url("../images/system/icon/site/16/ic_16-view.png");
+    }
+  }
+
+  &.icon-10 {
+    width: 10px;
+    height: 10px;
+
+    &.icon-cross {
+      background: url("../images/system/icon/site/10/ic_10-cross.png");
+    }
+  }
+
+  &.icon-35 {
+    width: 35px;
+    height: 35px;
+
+    &.ic-resend {
+      height: 31px;
+      background: url("../images/system/icon/site/35/ic_35-re_send.png");
+    }
+  }
+
+  &.icon-55 {
+    width: 55px;
+    height: 55px;
+
+    &.icon-check {
+      background: url("../images/system/icon/site/55/ic_55-check.png") no-repeat;
+
+    }
+  }
+
+  &.icon-70 {
+    width: 70px;
+    height: 70px;
+
+    &.icon-mail {
+      width: 69px;
+      height: 57px;
+      background: url("../images/system/icon/site/70/ic-70_mail.png") no-repeat;
+
+    }
+  }
+  &.pointer {
+    cursor: pointer;
+  }
+}

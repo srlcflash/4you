@@ -1,0 +1,108 @@
+//Button
+input.cm-btn,
+button.cm-btn,
+a.cm-btn {
+  color: $white;
+  vertical-align: middle;
+  padding: 7px 20px;
+  font-size: $base-font-size;
+  @include border-radius(2px);
+  outline: none;
+  border: none;
+  margin-right: 5px;
+  margin-left: 0;
+  background: $gray-light;
+  text-transform: uppercase;
+
+  @include breakpoint($small) {
+    display: block;
+    width: 100%;
+    margin-bottom:3px;
+  }
+
+  &.right {
+    float: right;
+    margin-right: 0;
+    margin-left: 5px;
+  }
+
+  &:hover {
+    background: rgba($gray-light, $opt-2);
+  }
+
+  //Sizes
+  &.large {
+    padding: 10px 40px;
+    color: $black;
+    font-size: $font-smallest;
+  }
+
+  //Background Colors
+  &.light-blue-4 {
+    color: $black;
+    background: $primary;
+
+    &:hover {
+      background: rgba($primary, $opt-2);
+    }
+  }
+
+  &.light-blue {
+    color: $white;
+    background: $secondary;
+
+    &:hover {
+      background: rgba($secondary, $opt-2);
+    }
+  }
+
+  //Text Transform
+  &.up-case {
+    text-transform: uppercase;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.56;
+  }
+}
+
+//Image Button
+.btn-img {
+  outline: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-size: $font-smallest;
+
+  &::before {
+    display: inline-block;
+    vertical-align: baseline;
+    width: 24px;
+    height: 24px;
+    content: '';
+    margin-right: 13px;
+  }
+
+  &.edit {
+    color: $orange;
+
+    &::before {
+      background: url("../images/system/icon/site/24/ic_24-edit.png");
+    }
+
+    &:hover {
+      $op: 0.86;
+
+      opacity: $op;
+
+      &::before {
+        opacity: $op
+      }
+    }
+  }
+
+  &.btn-img:hover {
+
+  }
+}

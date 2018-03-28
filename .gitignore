@@ -1,0 +1,20 @@
+
+/.idea/
+/assets/
+/protected/config/database.php
+/protected/data/
+
+/protected/runtime/application.log
+
+nbproject
+
+# windows thumbnail cache
+Thumbs.db
+/demos/
+/node_modules/
+/uploads/company/logo/
+!/uploads/company/logo/
+/uploads/CV/Registered/*
+/uploads/CV/Unregistered/*
+/uploads/JobAdvertisements/2017/*
+/uploads/JobAdvertisements/2018/*

@@ -1,0 +1,405 @@
+body {
+    background: #f7f7f7;
+}
+
+.f-24 {
+    font-size: 24px !important;
+}
+
+.f-20 {
+    font-size: 20px !important;
+}
+
+.f-18 {
+    font-size: 18px !important;
+}
+
+.f-16 {
+    font-size: 16px !important;
+}
+
+.f-14 {
+    font-size: 14px !important;
+}
+
+.f-12 {
+    font-size: 12px !important;
+}
+
+.border-r-0 {
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
+.hide-block {
+    display: none;
+}
+
+.navbar-fixed {
+    height: 90px;
+}
+
+/*.logo-link img {*/
+/*margin-top: 10px;*/
+/*}*/
+
+.adm-tbl-action_2 {
+    width: 7%;
+}
+
+.adm-tbl-action_3 {
+    width: 11%;
+}
+
+.ps-absolute {
+    position: absolute;
+}
+
+.ps-relative {
+    position: relative;
+}
+
+#page.container-fluid {
+    margin-top: 90px;
+}
+
+.ds-block {
+    display: block !important;
+}
+
+.width-100 {
+    width: 100px;
+}
+
+.logo-link {
+    height: auto;
+    padding: 0 15px;
+}
+
+.navbar-nav > li > a {
+    padding: 22px 15px;
+}
+
+/*------------------------------------
+    Button
+------------------------------------*/
+button.cm-btn,
+a.cm-btn,
+button.cm-btn:focus {
+    outline: none;
+    background: transparent;
+    border: none;
+    padding: 0;
+    float: left;
+    font-size: 16px;
+    color: #424242;
+    line-height: 24px;
+}
+
+a.cm-btn i,
+button.cm-btn i {
+    color: inherit;
+    margin-right: 10px;
+}
+
+a.cm-btn:hover,
+button.cm-btn:hover,
+a.cm-btn:hover i,
+button.cm-btn:hover i {
+    opacity: 0.86;
+}
+
+a.cm-btn.right,
+button.cm-btn.right {
+    float: right;
+}
+
+a.cm-btn.add,
+button.cm-btn.add {
+    color: #F58226;
+}
+
+/*------------------------------------
+    Messages
+------------------------------------*/
+.adm-alert {
+    display: none;
+    font-size: 14px;
+    padding: 15px;
+}
+
+.success {
+    background: #66bb6a;
+    color: #fff;
+}
+
+.info {
+    background: #bbdefb;
+    color: #fff;
+}
+
+.warning {
+    background: #fff9c4;
+    color: #004d40;
+}
+
+.danger {
+    background: #ef5350;
+    color: #ffffff;
+}
+
+/*------------------------------------
+    Search Bar
+------------------------------------*/
+
+.search-input-wrp {
+    width: 100%;
+    display: table;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.search-input,
+.search-action {
+    position: relative;
+    display: table-cell;
+    width: 100%;
+    vertical-align: middle;
+}
+
+.search-input .search-icon {
+    position: absolute;
+    top: 7px;
+    left: 10px;
+}
+
+.search-input input[type="text"] {
+    margin-bottom: 0;
+    height: 36px;
+    border: none;
+    text-indent: 40px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.09);
+}
+
+.search-input input[type="text"]:not(.browser-default):focus {
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.search-action .btn-flat,
+.search-action .btn-search {
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background: #ff5722;
+    padding: 0 30px;
+    height: 36px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 14px;
+    border: none;
+}
+
+.search-action .btn-flat {
+    color: rgba(0, 0, 0, 0.86);
+    background: rgba(0, 0, 0, 0.09);
+}
+
+/*====================================
+    Detail card
+=====================================*/
+.detail-card.outer-tb-10 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.detail-card.outer-tb-15 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+input.h-20 {
+    height: 20px !important;
+    margin-bottom: 0 !important;
+}
+
+input.h-24 {
+    height: 24px !important;
+}
+
+input[disabled].disabled {
+    border: none !important;
+}
+
+/*====================================
+   Menu
+=====================================*/
+
+.menu {
+    position: relative;
+}
+
+.menu li:hover > ul {
+    display: block;
+}
+
+.menu li ul {
+    display: none;
+    position: absolute;
+    width: 100%;
+    background: #FCB51D;
+}
+
+.menu ul ul,
+.menu ul ul ul {
+    right: 100%;
+    top: 0;
+    display: none;
+}
+
+.menu li ul li {
+    width: 100%;
+    position: relative;
+}
+
+.menu li a {
+    position: relative;
+}
+
+.menu li.hasChild > a {
+    padding-left: 30px;
+}
+
+.menu li.hasChild > a::before {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    content: '<';
+    font-size: 20px;
+    left: 15px;
+    display: inline-block;
+}
+
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
+    background: transparent;
+}
+
+.nav > li > a:focus, .nav > li > a:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: rgba(255, 255, 255, 0.86);
+}
+
+.dropdown-menu {
+    background: #FCB51D;
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+}
+
+.dropdown-menu > li > a {
+    padding: 15px 200px 15px 15px;
+}
+
+.dropdown-menu > li > a:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: rgba(255, 255, 255, 0.88);
+}
+
+nav ul a {
+    color: rgba(1, 1, 1, 0.56);
+}
+
+.login-page {
+    background: #000;
+}
+
+.login-panel h5 {
+
+}
+
+.input-no-label {
+    position: relative;
+}
+
+.input-no-label input {
+    -webkit-box-sizing: border-box !important;
+    -moz-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+    position: relative;
+    height: 24px !important;
+}
+
+.login-form {
+    margin-top: 10%;
+}
+
+.expand-card-head {
+
+}
+
+.expand-card-content {
+    display: none;
+}
+
+.company-form {
+    display: none;
+}
+
+.logo-wrp {
+    width: 225px;
+    height: 130px;
+    margin: 0 auto;
+    border: 8px solid rgba(0, 0, 0, 0.1)
+}
+
+.logo-wrp img {
+    width: 100%;
+}
+
+span.badge.empty::after {
+    content: "";
+}
+
+span.badge.empty {
+    background-color: #26a69a;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 300;
+}
+
+.file-uploader {
+    display: inline-block;
+    position: relative;
+}
+
+.file-uploader input[type="file"] {
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.file-uploader .button {
+    background: #cfcfd2 none repeat scroll 0 0;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14px;
+    padding: 12px 20px;
+}
+
+.border-8 {
+    border: 8px solid rgba(0, 0, 0, 0.1);
+}

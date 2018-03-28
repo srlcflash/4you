@@ -1,0 +1,2 @@
+
+var JobSeekerStep = JobSeekerStep();

@@ -1,0 +1,409 @@
+@import "variable";
+
+//Margin
+.m-auto {
+  margin: 0 auto;
+}
+
+@include margin;
+
+//Padding
+@include padding;
+
+//Text color class
+//Text Black
+@include text-color($black, black);
+
+//Text Dark Blue
+@include text-color($blue-dark, dark-blue);
+
+//Text Orange
+@include text-color($primary, orange);
+
+.f-10 {
+  font-size: 10px !important;
+}
+
+.f-12 {
+  font-size: 12px !important;
+}
+
+.f-18 {
+  font-size: 18px !important;
+}
+
+.f-20 {
+  font-size: 20px !important;
+}
+
+.f-30 {
+  font-size: 30px !important;
+}
+
+.ps-relative {
+  position: relative;
+}
+
+.ps-absolute {
+  position: absolute;
+}
+
+.w-60 {
+  width: 60%;
+}
+
+.w-80 {
+  width: 80%;
+}
+
+//Font Weight
+.f-light {
+  font-weight: $font-w-light;
+}
+
+.f-regular {
+  font-weight: $font-w-regular;
+}
+
+.f-medium {
+  font-weight: $font-w-medium;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+//Alignment
+.align-center {
+  text-align: center;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.is-search-fixed {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 998;
+}
+
+.fifty-block {
+  float: left;
+  width: 50%;
+}
+
+.rounded-img {
+
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.with-border {
+  border: 8px solid rgba($black, 0.1);
+
+  &.bd-width-6 {
+    border-width: 6px;
+  }
+}
+
+.float-block {
+  float: left;
+  width: 100%;
+}
+
+//Space
+.lg-ml-20 {
+  margin-left: 20px;
+  @include breakpoint($medium) {
+    margin-left: 0;
+  }
+}
+
+//Table Block
+.d-table {
+  display: table;
+  width: 100%;
+
+  &.width-auto {
+    width: auto;
+  }
+
+  .d-table-cell {
+    display: table-cell;
+    vertical-align: middle;
+
+    &.width-0 {
+      width: 0;
+    }
+
+    &.width-100 {
+      width: 100%;
+    }
+  }
+
+  &.cell-full-width {
+
+    .d-table-cell {
+      width: 100%;
+    }
+  }
+}
+
+.gradient {
+  background: #ffca28;
+  background: -moz-linear-gradient(-45deg, #ffca28 0%, #fbab18 100%);
+  background: -webkit-linear-gradient(-45deg, #ffca28 0%, #fbab18 100%);
+  background: linear-gradient(135deg, #ffca28 0%, #fbab18 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffca28', endColorstr='#fbab18', GradientType=1);
+
+}
+
+//Line
+.bottom-line {
+  border-bottom: 1px solid rgba($black, .12);
+}
+
+//tab-horizontal
+.tab-horizontal {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style: none;
+    display: block;
+    background: rgba($p-light, 0.56);
+    a {
+      padding: 15px 30px;
+      color: rgba($black, 0.86);
+      display: block;
+      font-size: $base-font-size;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 1px;
+    }
+
+    &.active {
+      a {
+        background: $primary;
+        color: $white;
+
+        &::before {
+          content: '';
+          position: absolute;
+          width: 0;
+          height: 0;
+          border-width: 8px 0 8px 10px;
+          border-color: transparent $primary;
+          border-style: solid;
+          display: inline-block;
+          left: 100%;
+          z-index: 9;
+        }
+      }
+    }
+  }
+}
+
+//Step List
+.step-list {
+  margin: 0;
+  padding: 0;
+  display: table;
+  width: 100%;
+
+  li {
+    display: table-cell;
+
+    &.width-0 {
+      width: 0;
+    }
+  }
+}
+
+.selected-items {
+  .item {
+    padding: 7px 18px;
+    font-size: $font-xs-small;
+    font-weight: $font-w-regular;
+    color: rgba($black, $opt-2);
+    float: left;
+    margin-top: 10px;
+    margin-right: 15px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    background: #e7e7e8;
+    line-height: 12px;
+
+    span {
+      margin-left: 15px;
+    }
+  }
+}
+
+//Input Search Box
+.input-search-box {
+  position: relative;
+
+  .search-result {
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 41px;
+    z-index: 9;
+    max-height: 230px;
+    overflow-y: scroll;
+    background: $white;
+    @include box-shadow(0, 2px, 5px, 0, rgba($black, 0.30));
+
+    ul {
+
+      li {
+        font-size: $base-font-size;
+        color: $blue-dark;
+        padding: 8px 15px;
+        font-weight: $font-w-regular;
+        cursor: pointer;
+
+        &:hover {
+          background: rgba($gray-light, 0.30);
+        }
+      }
+    }
+  }
+
+  &.is-active {
+
+    .search-result {
+      display: block;
+    }
+
+  }
+
+}
+
+//Tick
+.tick {
+  display: inline-block;
+  vertical-align: middle;
+  @include border-radius(50%);
+
+  &.s-28 {
+    width: 28px;
+    height: 28px;
+  }
+
+  &.green {
+    background: rgba($p-light, 1) url("../images/system/icon/site/16/ic_16-tick.png") no-repeat center center;
+  }
+
+}
+
+.status-text {
+
+  &.green {
+    color: #2dd112;
+  }
+}
+
+//------------------------------------------------------------------
+//User Profile
+//------------------------------------------------------------------
+
+.profile-img {
+  display: block;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  border: 8px solid rgba($black, .10);
+}
+
+//------------------------------------------------------------------
+//Employer Profile
+//------------------------------------------------------------------
+
+.employer-logo {
+  display: block;
+  border: 6px solid rgba($black, .10);
+}
+
+.circle-wrapper {
+  position: relative;
+
+  .circle {
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    vertical-align: middle;
+    border: 3px solid $p-light;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    @include border-radius(50%);
+    padding: 18px 0;
+    margin-bottom: 20px;
+    background: $white;
+
+    & + h5 {
+     @include breakpoint($small) {
+       display: inline-block;
+       vertical-align: middle;
+       padding-left:15px;
+     }
+    }
+  }
+  .line-wrp {
+    position: absolute;
+    top: calc(30% - 3px);
+    left: 0;
+  }
+  .line {
+    width: 100%;
+    height: 3px;
+    background: $p-light;
+  }
+}
+
+.status {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 20px;
+  &.valid {
+    background: url("../images/system/icon/site/16/ic_16-check.png") no-repeat;
+  }
+
+  &.invalid {
+    background: url("../images/system/icon/site/16/ic_16_reject-cross.png") no-repeat;
+  }
+}
+
+//------------------------------------------------------------------
+//Modules
+//------------------------------------------------------------------
+
+@import "button";
+@import "popup";
+@import "icons";
+@import "message";
+@import "file-uploader";
+@import "select";
+@import "states-dot";
+@import "animation";
+@import "card";

@@ -1,0 +1,16 @@
+{
+  "name": "dev",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/leapdoor/dev.git",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
+    "pump": "^1.0.2"
+  },
+  "devDependencies": {
+    "gulp-uglify": "^3.0.0"
+  }
+}

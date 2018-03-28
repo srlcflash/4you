@@ -1,0 +1,294 @@
+//@import "variable";
+
+$black: #000;
+$white: #fff;
+$form-input-line-color: #fbab18;
+$form-radio-button-color: #fbab18;
+$error: #f26b55;
+$error-background-color: rgba($error, 0.86);
+
+$animation-float-text: 0.2s all cubic-bezier(.26, .28, .42, .78);
+$animation-animate-line: 0.6s all cubic-bezier(.4, .19, .51, .98);
+$animation-radio-and-checkbox: 0.5s all cubic-bezier(.35, .12, 0, .98);
+$animation-none: all 0 cubic-bezier(.64, .1, .27, 1.44);
+
+//Transition
+@mixin transition($transition...) {
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  -webkit-transition: $transition;
+  transition: $transition;
+}
+
+//Transform
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+//Transition Duration
+@mixin transition-duration($duration) {
+  transition-duration: $duration;
+  -webkit-transition-duration: $duration;
+  -moz-transition-duration: $duration;
+  -o-transition-duration: $duration;
+}
+
+@mixin transform-origin($origin...) {
+  -webkit-transform-origin: $origin;
+  -moz-transform-origin: $origin;
+  -o-transform-origin: $origin;
+  -ms-transform-origin: $origin;
+  transform-origin: $origin;
+}
+
+/*-------------------------------------
+    Input and Textarea
+-------------------------------------*/
+
+.input-wrapper {
+  float: left;
+  width: 100%;
+  position: relative;
+
+  textarea,
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="number"] {
+    border: none;
+    background: transparent;
+    height: 24px;
+    font-size: 14px;
+    line-height: 14px;
+    width: 100%;
+    margin-top: 16px;
+  }
+
+  &.with-gap {
+    //margin-bottom:30px;
+  }
+
+  &.not-title {
+    textarea,
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"] {
+      margin-top: 0;
+    }
+  }
+
+  &.is-disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  textarea {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 60px;
+    resize: none;
+  }
+  textarea:active,
+  input[type="text"]:active,
+  input[type="password"]:active,
+  input[type="email"]:active,
+  input[type="number"]:active,
+  textarea:focus,
+  input[type="text"]:focus,
+  input[type="password"]:focus,
+  input[type="email"]:focus,
+  input[type="number"]:focus {
+    outline: none;
+    border: none;
+  }
+
+  span.error-val {
+    position: absolute;
+    top: 43px;
+    left: 0;
+    font-size: 12px;
+    color: $error;
+    width: 100%;
+    padding: 2px 0;
+
+    & ~ .animate-line {
+      background: $error;
+      @include transform(scaleX(1));
+    }
+  }
+
+  .input-line,
+  .animate-line {
+    position: absolute;
+    width: 100%;
+  }
+
+  .input-line {
+    height: 1px;
+    background: rgba($black, 0.2);
+  }
+
+  .float-text {
+    position: absolute;
+    bottom: calc(100% - 40px);
+    font-size: 14px;
+    z-index: -1;
+    @include transition($animation-float-text);
+  }
+
+  &.focus .animate-line {
+    @include transition($animation-animate-line);
+  }
+
+  &.blur .animate-line {
+    @include transition-duration(0.8s);
+  }
+
+  .animate-line {
+    height: 2px;
+    bottom: -2px;
+    background: $form-input-line-color;
+    @include transform(scaleX(0));
+    @include transform-origin(left center 0);
+  }
+
+  &.blur .animate-line,
+  &.focus .animate-line {
+    @include transform(scaleX(1));
+  }
+
+  &.blur .animate-line {
+    @include transform(scaleX(0));
+  }
+  &.text-top {
+    .float-text {
+      bottom: calc(100% - 15px);
+      left: 0;
+      font-size: 12px;
+      color: rgba($black, 0.56);
+    }
+  }
+
+  &.focus {
+    .float-text {
+      bottom: calc(100% - 15px);
+      left: 0;
+      font-size: 12px;
+      color: rgba($black, 0.56);
+    }
+  }
+
+  .side-label {
+    position: absolute;
+    right: 0;
+    font-size: 12px;
+    bottom: 2px;
+    color: rgba($black, 0.30);
+  }
+
+}
+
+/*-------------------------------------
+   Radio And Checkbox
+-------------------------------------*/
+
+@mixin label {
+  padding-left: 30px;
+  height: 25px;
+  font-size: 14px;
+  line-height: 23px;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+@mixin label_after_before {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  left: 0;
+  top: 0;
+}
+
+input[type="radio"] {
+  pointer-events: none;
+  display: none;
+
+  & + label {
+    @include label;
+  }
+
+  & + label::before,
+  & + label::after {
+    @include label_after_before;
+    @include transition($animation-radio-and-checkbox)
+  }
+
+  & + label::before {
+    border: 2px solid rgba($black, 0.30);
+  }
+
+  & + label::after {
+    background: $form-radio-button-color;
+    @include transform(scale(0));
+    left: 0;
+    top: 0;
+  }
+
+  &:checked + label::after {
+    @include transform(scale(1));
+  }
+}
+
+input[type="checkbox"] {
+
+  pointer-events: none;
+  display: none;
+
+  & + label {
+    @include label;
+  }
+
+  & + label::before,
+  & + label::after {
+    @include label_after_before;
+    border-radius: 2px;
+  }
+
+  & + label::before {
+    border: 2px solid rgba($black, 0.30);
+  }
+
+  & + label::after {
+    left: 0;
+    top: 0;
+
+  }
+
+  &:checked + label::after {
+    background: $form-radio-button-color url("../images/system/icon/site/12/ic_12-tick-white.png") no-repeat 2px 3px;
+  }
+}
+
+.state-wrapper {
+  float: left;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.checkbox-wrapper,
+.radio-wrapper,
+.input-wrapper {
+  margin-bottom: 20px;
+}
+
+
+
