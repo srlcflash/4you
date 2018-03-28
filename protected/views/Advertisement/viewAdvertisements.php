@@ -30,7 +30,8 @@ $jobPostText = $adData->ad_is_image == 2 ? $adData->ad_text : "";
                     if ($adData->ad_is_image == 2) {
                         ?>
                         <div class="col-md-12 mb-25">
-                            <img src="<?php echo Yii::app()->baseUrl ?>/uploads/Profile/Employer/<?php echo $companyLogo; ?>" alt="">
+                            <img src="<?php echo Yii::app()->baseUrl ?>/uploads/Profile/Employer/<?php echo $companyLogo; ?>"
+                                 alt="">
                         </div>
                         <?php
                     }
@@ -42,8 +43,9 @@ $jobPostText = $adData->ad_is_image == 2 ? $adData->ad_text : "";
                             <?php
                             if ($adData->ad_is_image == 1) {
                                 ?>
-                                <div class="col-md-12">                                                           
-                                    <img class="img-responsive" src="<?php echo Yii::app()->baseUrl . "/" . $jobPostUrl; ?>" alt=""/>
+                                <div class="col-md-12">
+                                    <img class="img-responsive"
+                                         src="<?php echo Yii::app()->baseUrl . "/" . $jobPostUrl; ?>" alt=""/>
                                 </div>
                                 <?php
                             }
@@ -63,39 +65,56 @@ $jobPostText = $adData->ad_is_image == 2 ? $adData->ad_text : "";
                         </div>
                     </div>
 
-                    <div class="col-sm-12 col-md-4">
-                        <div class="side-panel">
-                            <div class="side-panel-row">
-                                <h6 class="title">Type</h6>
-                                <h6 class="info"><?php echo $workType; ?></h6>
-                            </div>
+                    <!--                    <div class="col-sm-12 col-md-4">-->
+                    <!--                        <div class="side-panel">-->
+                    <!--                            <div class="side-panel-row">-->
+                    <!--                                <h6 class="title">Type</h6>-->
+                    <!--                                <h6 class="info">--><?php //echo $workType; ?><!--</h6>-->
+                    <!--                            </div>-->
+                    <!---->
+                    <!--                            <div class="side-panel-row">-->
+                    <!--                                <h6 class="title">Experience</h6>-->
+                    <!--                                <h6 class="info">-->
+                    <?php //echo $adData->ad_expected_experience . ' Year(s)'; ?><!--</h6>-->
+                    <!--                            </div>-->
+                    <!---->
+                    <!--                            <div class="side-panel-row">-->
+                    <!--                                <h6 class="title">Address</h6>-->
+                    <!--                                <h6 class="info">-->
+                    <?php //echo $employerAddress; ?><!--</h6>-->
+                    <!--                            </div>-->
+                    <!---->
+                    <!--                            <div class="side-panel-row">-->
+                    <!--                                <h6 class="title">Salary</h6>-->
+                    <!--                                <h6 class="info">-->
+                    <?php //echo $adData->ad_is_negotiable == 1 ? "Negotiable" : $adData->ad_salary; ?><!--</h6>-->
+                    <!--                            </div>-->
+                    <!---->
+                    <!--                            <input type="hidden" name="id" value="-->
+                    <?php //echo $currentPage . '-' . $adData->ad_id; ?><!--">-->
+                    <!--                            <div class="side-panel-row">-->
+                    <!--                                <button type="button" class="cm-btn large light-blue-4 up-case btn-apply-job">Apply</button>-->
+                    <!--                                --><?php //echo CHtml::button('Back', array('submit' => array('Site/Index'),'class'=>'cm-btn large text-uppercase light-blue right')) ?>
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
 
-                            <div class="side-panel-row">
-                                <h6 class="title">Experience</h6>
-                                <h6 class="info"><?php echo $adData->ad_expected_experience . ' Year(s)'; ?></h6>
-                            </div>
 
-                            <div class="side-panel-row">
-                                <h6 class="title">Address</h6>
-                                <h6 class="info"><?php echo $employerAddress; ?></h6>
-                            </div>
-
-                            <div class="side-panel-row">
-                                <h6 class="title">Salary</h6>
-                                <h6 class="info"><?php echo $adData->ad_is_negotiable == 1 ? "Negotiable" : $adData->ad_salary; ?></h6>
-                            </div>
-
-                            <input type="hidden" name="id" value="<?php echo $currentPage . '-' . $adData->ad_id; ?>">
-                            <div class="side-panel-row">
-                                <button type="button" class="cm-btn large light-blue-4 up-case btn-apply-job">Apply</button>
-                                <?php echo CHtml::button('Back', array('submit' => array('Site/Index'),'class'=>'cm-btn large text-uppercase light-blue right')) ?>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="action-panel is-active">
+        <div class="arrow-btn is-active">
+            <span></span>
+        </div>
+        <div class="back-btn" onclick="back()">
+            <i></i>Back
+        </div>
+        <div class="apply-btn btn-apply-job">Apply</div>
+    </div>
+
 </section>
 <?php $this->endWidget(); ?>
 
@@ -113,6 +132,12 @@ $jobPostText = $adData->ad_is_image == 2 ? $adData->ad_text : "";
                     Popup.show(html)
                 }
             });
+        });
+
+        $('.arrow-btn').on('click', function () {
+            var $this = $(this);
+            $this.toggleClass('is-active');
+            $this.parent().toggleClass('is-active');
         });
     })
 

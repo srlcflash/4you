@@ -219,10 +219,12 @@ var Select = (function () {
 
         $(ele).each(function () {
             var $this = $(this);
-
+            var oldKey = '';
             var selectedOption = $this.find('.selected-option');
             var optionList = $this.find('.option-list');
             var htmlSelect = $this.find('select');
+
+            $this.attr('tabindex', '0');
 
             var HTMLSelect = {
                 isRequired: false,
@@ -282,6 +284,11 @@ var Select = (function () {
             //Show Selected
             function setSelected(isSelectedVal) {
                 selectedOption.find('span').html(HTMLSelect.selected(isSelectedVal)[2]);
+
+                if (selectedOption.find('span').text().length !== 0) {
+                    $this.addClass('is-selected');
+                }
+
             }
 
             //Set options to list
@@ -295,7 +302,7 @@ var Select = (function () {
                 }
 
                 if (optionLength === 1 || optionLength === 0) {
-                    console.log('EEE ', HTMLSelect.getSelectVal())
+
                     if (HTMLSelect.getSelectVal() == "" ||
                         HTMLSelect.getSelectVal() == 0 ||
                         HTMLSelect.getSelectVal() == null ||
@@ -313,11 +320,14 @@ var Select = (function () {
 
                     if (option.isSelected) {
                         li.addClass('selected');
+                        li.addClass('focus');
+                        li.focus();
                     }
                     if (option.isDisabled) {
                         li.addClass('disabled');
                     }
 
+                    li.attr('tabindex', '0');
                     li.html(option.text);
                     li.attr('data-val', option.val);
                     optionList.append(li);
@@ -330,14 +340,18 @@ var Select = (function () {
             setSelected(true);
             setOptions();
 
-            selectedOption.on('click', function () {
-                $('.option-list').css('display', 'none');
-                optionList.css('display', 'block');
+            selectedOption.on('click', function (e) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+
+                $('.is-open').not($this).removeClass('is-open');
+                $(this).parent().toggleClass('is-open');
             });
 
             //option click
             optionList.on('click', 'li', function () {
-                optionList.css('display', 'none');
+                //optionList.css('display', 'none');
+                $('.is-open').removeClass('is-open');
                 var $this = $(this);
                 var val = $this.attr('data-val');
 
@@ -346,18 +360,115 @@ var Select = (function () {
                 setOptions();
             });
 
-            htmlSelect.on('domChanged', function () {
-
-            });
 
             $(document).on('click', function (evt) {
                 var target = $(evt.target);
 
                 if (!target.parents().hasClass('selector')) {
-                    optionList.css('display', 'none');
+                    // optionList.css('display', 'none');
                 }
             });
 
+            $this.on('focus', function () {
+                $this.addClass('is-focus');
+            });
+
+            $this.on('focusout', function () {
+                $this.removeClass('is-focus');
+            });
+
+            $this.on('keyup', function (e) {
+
+                e.preventDefault();
+                e.stopImmediatePropagation();
+
+                var $focus_option = optionList.find('.focus');
+
+                if (e.keyCode === 13) {
+                    $focus_option.trigger('click');
+                } else if (e.keyCode === 40) {
+                    //Arrow key Down
+
+                    if (!$this.hasClass('is-open')) {
+                        selectedOption.trigger('click')
+                    } else {
+                        var $next = $focus_option.nextAll('li:not(.disabled)').first();
+                        count = 0;
+                        if ($next.length > 0) {
+                            optionList.find('.focus')
+                                .removeClass('focus');
+
+                            $next.addClass('focus')
+                                .focus();
+                        }
+
+                    }
+                    return false;
+
+                } else if (e.keyCode === 38) {
+                    var $prev = $focus_option.prevAll('li:not(.disabled)').first();
+                    count = 0;
+                    if ($prev.length > 0) {
+                        optionList.find('.focus')
+                            .removeClass('focus');
+
+                        $prev.addClass('focus')
+                            .focus();
+                    }
+                    return false;
+                }
+
+            });
+
+            var count = 0,
+                optArr = [];
+
+            $this.on('keypress', function (e) {
+
+                e.preventDefault();
+                e.stopImmediatePropagation();
+
+                var $key = e.key;
+
+                if ($this.hasClass('is-open')) {
+
+                    if ($key !== oldKey) {
+                        count = 0;
+                        optArr = [];
+                        optionList.find('li:not(.focus)').each(function () {
+
+                            var li = $(this);
+                            var letter = li.text().charAt(0).toLowerCase();
+
+                            if (letter === $key) {
+                                oldKey = $key;
+                                optArr.push(li);
+                            }
+                        });
+
+                    }
+
+                    var arrLength = optArr.length;
+
+                    if (count === arrLength) {
+                        count = 0;
+                    }
+
+                    if (count < arrLength) {
+                        optionList.find('.focus').removeClass('focus');
+                        optArr[count].addClass('focus').focus();
+                        count++;
+                    }
+                }
+
+            });
+
+            $(document).on('click', function (e) {
+
+                if ($(e.target).closest('.selector').length === 0) {
+                    $('.selector').removeClass('is-open');
+                }
+            })
 
         })
     };

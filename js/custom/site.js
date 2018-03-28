@@ -4,7 +4,8 @@ var isScrollTop = false;
 
 //Get job title position in the top.
 var $titleOffset = ($('#searchWrapper').offset().top),
-    breakpoint = calSize();
+    $searchAreaPosition = $('.search-area').offset().top - 30,
+    breakpoint = 0;
 
 
 var SelectedCategory = (function () {
@@ -33,6 +34,9 @@ var SelectedCategory = (function () {
 
             //If select main category All that popup will be hide
             if ($this.hasClass('all')) {
+
+                _category.categoryID.sub = [];
+
                 loadJobsByCategory();
                 scrollToDown();
             }
@@ -51,8 +55,10 @@ var SelectedCategory = (function () {
             scrollToDown();
         }
 
+        console.log(_category)
 
     });
+
 
     return _category;
 
@@ -126,28 +132,17 @@ function responsivePageHeight() {
     //$('.navbar').removeClass('light-blue').css('backgroundColor', 'transparent');
 })();
 
-
-function calSize() {
-    var val = 0;
-    var deviceWidth = $(window)[0].innerWidth;
-    if (deviceWidth > 425) {
-        val = $titleOffset + 90;
-    } else {
-        val = $titleOffset - 80;
-    }
-    return val;
-}
-
 function scrollToDown() {
 
-    var _titleTopSpace = $titleOffset + 90,
+    // var _titleTopSpace = $titleOffset + 90,
+    var _titleTopSpace = $titleOffset,
         $searchSection = $('.search-section'),
         $searchArea = $('.search-area');
 
     var $pageHeight = responsivePageHeight();
 
     if ($(window).scrollTop() > 0) {
-        $("html, body").animate({scrollTop: _titleTopSpace}, 500);
+        $("html, body").animate({scrollTop: $searchAreaPosition}, 500);
     }
 
 }
@@ -174,7 +169,7 @@ function scrollToDown() {
     var lastScrollVal = 0;
 
     function scrollOnFocusInput() {
-        $("html, body").animate({scrollTop: $searchArea.offset().top - 30}, 500);
+        $("html, body").animate({scrollTop: $searchAreaPosition}, 500);
         $searchArea.siblings('.filters').css('opacity', '1');
     }
 
@@ -231,7 +226,7 @@ function scrollToDown() {
     });
 
     $searchInput.on('keyup', function () {
-        //$(this).trigger('click');
+        // $(this).trigger('focus');
     });
 
     init();

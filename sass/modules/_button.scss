@@ -16,8 +16,11 @@ a.cm-btn {
 
   @include breakpoint($small) {
     display: block;
-    width: 100%;
     margin-bottom:3px;
+    &:not(.not-block){
+      width: 100%;
+    }
+
   }
 
   &.right {

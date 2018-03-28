@@ -10,8 +10,9 @@ $form = $this->beginWidget('CActiveForm', array('id' => 'formStepThree',
     <div class="row mb-15">
         <div class="col-md-6">
             <div class="selector dark">
+                <div class="text-label">Industry</div>
                 <div class="selected-option">
-                    <span>Industry</span>
+                    <span></span>
                 </div>
                 <ul class="option-list"></ul>
 
@@ -19,13 +20,12 @@ $form = $this->beginWidget('CActiveForm', array('id' => 'formStepThree',
             </div>
         </div>
 
-    </div>
 
-    <div class="row mb-15">
         <div class="col-md-6">
             <div class="selector dark">
+                <div class="text-label">Category (Field)</div>
                 <div class="selected-option">
-                    <span>Category (Field)</span>
+                    <span></span>
                 </div>
                 <ul class="option-list"></ul>
                 <?php echo Chtml::dropDownList('cat_id', "", CHtml::listData(AdmCategory::model()->findAll(array('order' => 'cat_order')), 'cat_id', 'cat_name'), array('empty' => 'Select Category', 'required' => 'required', 'onChange' => 'loadSubCategories()')); ?>
@@ -33,9 +33,10 @@ $form = $this->beginWidget('CActiveForm', array('id' => 'formStepThree',
         </div>
 
         <div class="col-md-6">
-            <div class="selector dark">
+            <div class="selector dark subCategories">
+                <div class="text-label">Sub Category</div>
                 <div class="selected-option">
-                    <span>Sub Category</span>
+                    <span></span>
                 </div>
                 <ul class="option-list"></ul>
 
@@ -45,15 +46,13 @@ $form = $this->beginWidget('CActiveForm', array('id' => 'formStepThree',
             </div>
         </div>
 
-    </div>
 
-
-    <div class="row mb-15">
 
         <div class="col-md-6">
-            <div class="selector dark">
+            <div class="selector dark designations">
+                <div class="text-label">Expected Job title</div>
                 <div class="selected-option">
-                    <span>Expected Job title</span>
+                    <span></span>
                 </div>
                 <ul class="option-list"></ul>
 
@@ -63,9 +62,7 @@ $form = $this->beginWidget('CActiveForm', array('id' => 'formStepThree',
             </div>
         </div>
 
-    </div>
 
-    <div class="row mb-15">
 
         <div class="col-md-6 mt-30">
             <div class="d-table work-type">
@@ -84,20 +81,17 @@ $form = $this->beginWidget('CActiveForm', array('id' => 'formStepThree',
             </div>
         </div>
 
-    </div>
 
-
-    <div class="row mb-15">
-        <div class="col-md-6">
+        <div class="col-md-6 mt-20 mb-20">
             <h6 class="text-black text-light-2 f-12 mb-2">Relevant No of years Experience</h6>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-xs-6">
                     <div class="input-wrapper mb-0 text-top">
                         <span class="side-label">Year</span>
                         <input class="mt-0" id="experienceYears" name="experienceYears" type="text" value="0">
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-xs-6">
                     <div class="input-wrapper mb-0 text-top">
                         <span class="side-label">Month</span>
                         <input class="mt-0" id="experienceMonths" name="experienceMonths" type="text" value="0">
@@ -116,10 +110,10 @@ $form = $this->beginWidget('CActiveForm', array('id' => 'formStepThree',
                 <div class="float-text">Expected Monthly Salary (LKR)</div>
             </div>
         </div>
-    </div>
 
-    <div class="row mb-15 mt-35">
-        <div class="col-md-6">
+        <div class="col-md-12 mb-20"></div>
+
+        <div class="col-md-6 ">
             <input id="activelylooking" name="group2" value="1" type="radio" checked="checked">
             <label for="activelylooking">Actively looking right now </label>
             <p class="text-dark-blue text-light-3 f-12 ml-25 mt-7">Maximum matches. We'll get you in front of
@@ -145,8 +139,9 @@ $form = $this->beginWidget('CActiveForm', array('id' => 'formStepThree',
 
         <div class="col-md-6">
             <div class="selector dark">
+                <div class="text-label">District</div>
                 <div class="selected-option">
-                    <span>District</span>
+                    <span></span>
                 </div>
                 <ul class="option-list"></ul>
                 <?php echo Chtml::dropDownList('district_id', "", CHtml::listData(AdmDistrict::model()->findAll(), 'district_id', 'district_name'), array('empty' => 'Select District', 'onChange' => 'loadCities()')); ?>
@@ -154,9 +149,10 @@ $form = $this->beginWidget('CActiveForm', array('id' => 'formStepThree',
         </div>
 
         <div class="col-md-6">
-            <div class="selector dark">
+            <div class="selector dark city-select">
+                <div class="text-label">City</div>
                 <div class="selected-option">
-                    <span>City</span>
+                    <span></span>
                 </div>
                 <ul class="option-list"></ul>
 
@@ -366,7 +362,7 @@ $form = $this->beginWidget('CActiveForm', array('id' => 'formStepThree',
                     }
 
                     setTimeout(function () {
-                        Select.init();
+                        Select.init('.subCategories');
                     }, 200);
 
                     loadDesignations();
@@ -398,7 +394,7 @@ $form = $this->beginWidget('CActiveForm', array('id' => 'formStepThree',
                     }
 
                     setTimeout(function () {
-                        Select.init();
+                        Select.init('.designations');
                     }, 200);
                 }
             }
@@ -427,7 +423,7 @@ $form = $this->beginWidget('CActiveForm', array('id' => 'formStepThree',
                     }
 
                     setTimeout(function () {
-                        Select.init();
+                        Select.init('.city-select');
                     }, 200)
                 }
             }

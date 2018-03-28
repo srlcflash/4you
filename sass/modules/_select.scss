@@ -1,8 +1,10 @@
 //Selector
 .selector {
   position: relative;
-  float: left;
+  //float: left;
   width: 100%;
+  display: block;
+  margin-bottom: 20px;
 
   &.is-disabled {
     cursor: auto;
@@ -29,20 +31,45 @@
       left: 0;
       padding: 2px 0;
       position: absolute;
-      top: 23px;
+      top: 40px;
       width: 100%;
     }
 
   }
 
+  .text-label {
+    z-index: -1;
+    position: absolute;
+    top: 15px;
+    left: 0;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.86);
+  }
+
+  &.is-selected {
+    .text-label {
+      top: -2px;
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.56);
+    }
+  }
+
   .selected-option {
-    float: left;
+    //float: left;
+    width: 100%;
+    display: block;
     font-size: $font-small;
     color: $white;
     font-weight: $font-w-medium;
-    width: inherit;
     background: url("../images/system/icon/site/16/ic_16-arrow-down-white.png") no-repeat right 10px;
     cursor: pointer;
+  }
+
+  &.is-open {
+    .option-list {
+      display: block;
+    }
+
   }
 
   .option-list {
@@ -74,6 +101,10 @@
         background: rgba($blue-dark, 0.15);
       }
 
+      &.focus {
+        background: rgba($blue-dark, 0.05);
+      }
+
       &.disabled {
         display: none;
       }
@@ -81,18 +112,21 @@
   }
 
   &.dark {
-    margin-top: 20px;
+    //margin-top: 20px;
 
     .selected-option {
       color: rgba($black, $opt-2);
       font-size: $font-smallest;
+      padding-top: 20px;
+      height: 42px;
       font-weight: $font-w-regular;
       border-bottom: 1px solid rgba($black, 0.2);
-      background: url("../images/system/icon/site/16/ic_16-arrow-down.png") no-repeat right 5px;
+      background: url("../images/system/icon/site/16/ic_16-arrow-down.png") no-repeat right 28px;
     }
 
     .option-list {
       top: 20px;
     }
   }
+
 }

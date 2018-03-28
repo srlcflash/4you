@@ -302,10 +302,14 @@ header {
 
     > li {
 
+      .col-title {
+        margin-bottom: 7px;
+      }
+
       a {
         color: rgba($blue-dark, 1);
-        border-bottom: 1px solid $gray-light;
-        padding: 20px 24px;
+        border-bottom: 1px solid rgba($black, 0.30);
+        padding: 15px 15px;
         @include float-block;
         @include transition($animation-1);
 
@@ -317,6 +321,8 @@ header {
         h3 {
           color: $blue-dark;
           font-weight: $font-w-medium;
+          font-size: $font-small;
+          line-height: 18px;
         }
 
         h6 {
@@ -324,6 +330,7 @@ header {
           display: inline-block;
           width: 100%;
           font-weight: $font-w-light;
+          line-height: $base-font-size;
 
           @include breakpoint($small) {
             text-align: left;
@@ -347,9 +354,14 @@ header {
             display: inline-block;
             font-size: $base-font-size;
             min-width: 100px;
+            line-height: $base-font-size;
 
             &:not(:last-child) {
               margin-right: 15px;
+            }
+
+            .dot {
+              margin-bottom: 0;
             }
 
             @include breakpoint($small) {
@@ -706,6 +718,19 @@ input[type="radio"] {
       }
     }
 
+    @include breakpoint($small) {
+
+      text-align: left !important;
+
+      a span.number {
+        font-size: 48px;
+      }
+
+      &:not(.active) {
+        display: none;
+      }
+    }
+
   }
 }
 
@@ -896,4 +921,80 @@ input[type="radio"] {
   .fr-toolbar {
     z-index: 1;
   }
+}
+
+.action-panel {
+
+  position: fixed;
+  right: -74px;
+  top: 26%;
+  @include border-radius(20px 0 0 20px);
+  overflow: hidden;
+  @include transition(right .2s ease-in-out);
+
+  &.is-active {
+    right: 0;
+  }
+
+  .arrow-btn {
+    width: 30px;
+    height: 30px;
+    @include border-radius(50%);
+    background: $white;
+    top: 63px;
+    left: -15px;
+    position: absolute;
+    cursor: pointer;
+
+    span {
+      width: 7px;
+      height: 13px;
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      display: inline-block;
+      background: url("./../images/system/icon/site/7/icon-arrow-7.png");
+    }
+
+    &.is-active {
+      span {
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .apply-btn,
+  .back-btn {
+    padding: 28px 10px 30px 24px;
+    cursor: pointer;
+    height: 78px;
+  }
+
+  .back-btn {
+
+    background: $secondary;
+    font-size: $base-font-size;
+    color: $white;
+
+    i {
+      width: 28px;
+      height: 28px;
+      margin-right: 5px;
+      display: inline-block;
+      vertical-align: middle;
+      background: url("./../images/system/icon/site/28/icon-back-28.png");
+    }
+  }
+
+  .apply-btn {
+    background: $primary;
+    font-size: $font-small;
+    font-weight: $font-w-medium;
+    text-transform: uppercase;
+  }
+
 }

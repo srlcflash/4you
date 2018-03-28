@@ -10,6 +10,7 @@ $form = $this->beginWidget('CActiveForm', array('id' => 'formStepTwo', 'htmlOpti
 
         <div class="col-md-6">
             <div class="selector dark">
+                <div class="text-label">Industry</div>
                 <div class="selected-option">
                     <span>Industry</span>
                 </div>
@@ -27,14 +28,11 @@ $form = $this->beginWidget('CActiveForm', array('id' => 'formStepTwo', 'htmlOpti
             </div>
         </div>
 
-    </div>
-
-    <div class="row mb-15">
-
         <div class="col-md-6">
             <div class="selector dark isDisabledOnFresher">
+                <div class="text-label">Category (Field)</div>
                 <div class="selected-option">
-                    <span>Category (Field)</span>
+                    <span></span>
                 </div>
                 <ul class="option-list"></ul>
                 <?php echo Chtml::dropDownList('cat_id', "", CHtml::listData(AdmCategory::model()->findAll(array('order' => 'cat_order')), 'cat_id', 'cat_name'), array('empty' => 'Select Category', 'options' => array($jsEmploymentData->ref_category_id => array('selected' => true)), 'required' => 'required', 'onChange' => 'loadSubCategories()')); ?>
@@ -43,8 +41,9 @@ $form = $this->beginWidget('CActiveForm', array('id' => 'formStepTwo', 'htmlOpti
 
         <div class="col-md-6">
             <div class="selector dark subCategories-select isDisabledOnFresher">
+                <div class="text-label">Sub Category</div>
                 <div class="selected-option">
-                    <span>Sub Category</span>
+                    <span></span>
                 </div>
                 <ul class="option-list"></ul>
 
@@ -53,15 +52,11 @@ $form = $this->beginWidget('CActiveForm', array('id' => 'formStepTwo', 'htmlOpti
             </div>
         </div>
 
-    </div>
-
-
-    <div class="row mb-15">
-
         <div class="col-md-6">
             <div class="selector dark designations-select isDisabledOnFresher">
+                <div class="text-label">Current Job title</div>
                 <div class="selected-option">
-                    <span>Current Job title</span>
+                    <span></span>
                 </div>
                 <ul class="option-list"></ul>
 

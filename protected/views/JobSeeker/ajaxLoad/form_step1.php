@@ -7,72 +7,59 @@ $form = $this->beginWidget('CActiveForm', array('id' => 'formStepOne',
         ));
 ?>
 <div class="col-md-12">
-    <div class="row mb-15">
+    <div class="row">
         <div class="col-md-12">
             <div class="input-wrapper">
                 <input id="address" name="address" type="text" value="<?php echo $jsBasicData->js_address; ?>" required>
                 <div class="float-text">Address</div>
             </div>
         </div>
-    </div>
-    <div class="row mb-15">
-
         <div class="col-md-6">
             <div class="input-wrapper">
                 <input id="dob" name="dob" class="datePicker" type="text" value="<?php echo $jsBasicData->js_dob; ?>">
                 <div class="float-text">Date of birth</div>
             </div>
         </div>
-
         <div class="col-md-6">
             <div class="input-wrapper">
                 <input id="contactNo" name="contactNo" type="text" value="<?php echo $jsBasicData->js_contact_no1; ?>">
                 <div class="float-text">Contact No ( Optional )</div>
             </div>
         </div>
-
-    </div>
-
-    <div class="row mb-15">
-
         <div class="col-md-6">
 
             <h6 class="text-black text-light-2 f-12 mb-2">Total No of years experience</h6>
 
             <div class="row">
-                <div class="col-md-6">
-                    <div class="input-wrapper mb-0">
+                <div class="col-xs-6">
+                    <div class="input-wrapper">
                         <input class="mt-0" id="experience" name="experienceYear" type="text"
                                value="<?php echo $jsBasicData->js_experience_years; ?>">
                         <span class="side-label">Year</span>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="input-wrapper  mb-0">
+                <div class="col-xs-6">
+                    <div class="input-wrapper">
                         <input class="mt-0" name="experienceMonth" type="text"
                                value="<?php echo $jsBasicData->js_experience_months; ?>">
                         <span class="side-label">Month</span>
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
         <div class="col-md-6">
             <div class="selector dark">
+                <div class="text-label">Highest Academic Qualification</div>
                 <div class="selected-option">
-                    <span>Highest Acadamic Qualification</span>
+                    <span></span>
                 </div>
 
                 <ul class="option-list"></ul>
-                <?php echo Chtml::dropDownList('ahaq_id', "", CHtml::listData(AdmHigherAcademicQuali::model()->findAll(), 'ahaq_id', 'ahaq_name'), array('empty' => 'Select Higher Academic Qualification', 'options' => array($jsBasicData->js_highest_academic_quali => array('selected' => true)))); ?>               
+                <?php echo Chtml::dropDownList('ahaq_id', "", CHtml::listData(AdmHigherAcademicQuali::model()->findAll(), 'ahaq_id', 'ahaq_name'), array('empty' => 'Select Higher Academic Qualification', 'options' => array($jsBasicData->js_highest_academic_quali => array('selected' => true)))); ?>
 
             </div>
         </div>
-    </div>
-
-
-    <div class="row mb-15">
-
         <div class="col-md-6">
             <div class="input-wrapper">
                 <input id="nameOfAcaQuali" name="nameOfAcaQuali" type="text"
@@ -80,16 +67,12 @@ $form = $this->beginWidget('CActiveForm', array('id' => 'formStepOne',
                 <div class="float-text">Name of the Academic Qualification</div>
             </div>
         </div>
-
-    </div>
-
-    <div class="row mb-15">
-
+        <div class="col-md-12"></div>
         <!--Proffesional Qualification-->
-        <div class="col-md-6">
+        <div class="col-md-6 ">
             <div class="row input-collection">
                 <div class="col-md-12 mb-15">
-                    <button data-btn="profQuali" type="button" class="cm-btn text-uppercase right addInput">Add New
+                    <button data-btn="profQuali" type="button" class="not-block cm-btn text-uppercase right addInput">Add New
                     </button>
                 </div>
 
@@ -125,7 +108,7 @@ $form = $this->beginWidget('CActiveForm', array('id' => 'formStepOne',
         <div class="col-md-6">
             <div class="row input-collection">
                 <div class="col-md-12 mb-15">
-                    <button data-btn="membership" type="button" class="cm-btn text-uppercase right membership addInput">
+                    <button data-btn="membership" type="button" class="not-block cm-btn text-uppercase right membership addInput">
                         Add New
                     </button>
                 </div>
@@ -161,13 +144,11 @@ $form = $this->beginWidget('CActiveForm', array('id' => 'formStepOne',
 
         </div>
 
-    </div>
-
-    <div class="row">
         <div class="col-md-12 mt-20">
             <button type="submit" class="cm-btn large text-uppercase light-blue right btn-next">Next</button>
             <button type="button" onclick="skip()" class="cm-btn large text-uppercase light-blue right">Skip</button>
         </div>
+
     </div>
     <?php $this->endWidget(); ?>
 </div>

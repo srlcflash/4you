@@ -50,8 +50,9 @@ $animation-none: all 0 cubic-bezier(.64, .1, .27, 1.44);
 -------------------------------------*/
 
 .input-wrapper {
-  float: left;
+  //float: left;
   width: 100%;
+  display: block;
   position: relative;
 
   textarea,
@@ -279,9 +280,11 @@ input[type="checkbox"] {
 }
 
 .state-wrapper {
-  float: left;
+  //float: left;
   width: 100%;
+  display: block;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .checkbox-wrapper,

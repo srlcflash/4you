@@ -25,7 +25,7 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl . '/js
                                             <span class="text">
                                                 Personal<br>Information
                                             </span>
-                                        </a>                                        
+                                        </a>
                                     </li>
                                     <li>
                                         <a data-step="1">
